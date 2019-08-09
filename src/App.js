@@ -3,28 +3,28 @@ import HideTodo from"./components/HideTodo";
 import Todos from "./components/Todos";
 import Header from './components/Header';
 import AddTodo from './components/AddTodo';
-import uuid from 'uuid';
 import './App.css';
 
 
 class App extends Component {
 
   state = {
+    maxID: 3,
     todos: [
       {
-        id: uuid.v4(),
+        id: 1,
         title: 'Eat Breakfast',
         completed: false,
         isHidden: false
       },
       {
-        id: uuid.v4(),
+        id: 2,
         title: 'Workout',
         completed: false,
         isHidden: false
       },
       {
-        id: uuid.v4(),
+        id: 3,
         title: 'Sleep',
         completed: false,
         isHidden: false
@@ -51,7 +51,7 @@ class App extends Component {
         todo.completed = !todo.completed 
       }
       return todo;
-      console.log(this.state.todos)
+
     }) });
   }
 
@@ -64,11 +64,14 @@ class App extends Component {
   //Add Todo
   addTodo = (title)=>{
     const newTodo = {
-      id: uuid.v4(),
+      id: this.state.maxID+1,
       title: title,
       completed: false
-    }
-    this.setState({todos: [...this.state.todos, newTodo]});
+    };
+    this.setState({todos: [...this.state.todos, newTodo], maxID: this.state.maxID+1});
+  }
+  handleRLDDChange = (reorderedItems) => {
+    this.setState({ todos: reorderedItems });
   }
 
   render() {
@@ -79,7 +82,7 @@ class App extends Component {
           <HideTodo hideTodo={this.hideTodo}/>
           <AddTodo addTodo={this.addTodo}/>
           <Todos todos = {this.state.todos} markComplete={this.markComplete} 
-          delTodo={this.delTodo}/>
+          delTodo={this.delTodo} handleRLDDChange={this.handleRLDDChange}/>
         </div>
       </div>
     );
