@@ -27,6 +27,15 @@ a {
   cursor: pointer;
 }
 
+.btn2 {
+  display: inline-block;
+  border: none;
+  background: rgb(255, 0, 0);
+  color: #fff;
+  padding: 7px 20px;
+  cursor: pointer;
+}
+
 .btn:hover {
   background: #666;
 }
