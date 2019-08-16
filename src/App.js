@@ -3,6 +3,7 @@ import HideTodo from"./components/HideTodo";
 import Todos from "./components/Todos";
 import Header from './components/Header';
 import AddTodo from './components/AddTodo';
+import Clock from "./components/Clock";
 import './App.css';
 
 
@@ -79,6 +80,7 @@ class App extends Component {
       <div className="App">
         <div className="container">
           <Header />
+          <Clock/>
           <HideTodo hideTodo={this.hideTodo}/>
           <AddTodo addTodo={this.addTodo}/>
           <Todos todos = {this.state.todos} markComplete={this.markComplete} 
